@@ -1,0 +1,62 @@
+@import "tailwindcss";
+
+@theme inline {
+  --font-sans: var(--font-dm-sans);
+  --font-display: var(--font-playfair);
+  --color-cream: #fdf8f1;
+  --color-ink: #2b1d14;
+  --color-chili: #c2410c;
+  --color-chili-dark: #9a3412;
+  --color-saffron: #e8891d;
+  --color-leaf: #3f6b3a;
+  --color-cocoa: #2a150a;
+}
+
+body {
+  background: var(--color-cream);
+  color: var(--color-ink);
+  font-family: var(--font-sans), system-ui, sans-serif;
+}
+
+h1, h2, h3 {
+  font-family: var(--font-display), Georgia, serif;
+  letter-spacing: -0.01em;
+}
+
+html { scroll-behavior: smooth; }
+
+@keyframes fade-up {
+  from { opacity: 0; transform: translateY(24px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes float-slow {
+  0%, 100% { transform: translateY(0) scale(1); }
+  50% { transform: translateY(-24px) scale(1.06); }
+}
+
+@keyframes shimmer {
+  0% { background-position: 0% 50%; }
+  100% { background-position: 200% 50%; }
+}
+
+.animate-fade-up { animation: fade-up 0.7s ease-out both; }
+.animate-float { animation: float-slow 9s ease-in-out infinite; }
+.animate-float-delayed { animation: float-slow 11s ease-in-out infinite 2s; }
+
+.text-shimmer {
+  background: linear-gradient(90deg, #e8891d, #fde2b8, #e8891d);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: shimmer 5s linear infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation: none !important;
+    transition: none !important;
+    scroll-behavior: auto !important;
+  }
+}
